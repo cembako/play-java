@@ -3,5 +3,5 @@ import java.util.Map;
 
 public final class JsonSembako{
     public String name;
-	public Map<Integer,Float> prices;
+	public Map<Byte,Float> prices;
 }
