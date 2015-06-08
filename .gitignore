@@ -16,3 +16,4 @@ dist
 .sbtserver*
 .idea*
 .settings*
+log*
