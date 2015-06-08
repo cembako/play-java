@@ -17,3 +17,5 @@ dist
 .idea*
 .settings*
 log*
+target*
+*target*
