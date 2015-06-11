@@ -3,10 +3,8 @@ package models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import play.data.format.Formats;
 import play.db.ebean.Model;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -21,7 +19,9 @@ public class SembakoPrice extends Model {
 	@JsonIgnore
 	public Sembako sembako;
 
+	@ManyToOne
 	public City city;
+
 	public float price;
 
 	@Formats.DateTime(pattern="yyyy-MM-dd")

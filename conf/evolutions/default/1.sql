@@ -31,6 +31,7 @@ create table sembakos (
 create table sembako_prices (
   id                        integer not null,
   sembako_id                integer,
+  city_id                   integer,
   price                     float,
   date                      timestamp,
   constraint pk_sembako_prices primary key (id))
@@ -71,6 +72,8 @@ alter table pantauans add constraint fk_pantauans_users_1 foreign key (user_id) 
 create index ix_pantauans_users_1 on pantauans (user_id);
 alter table sembako_prices add constraint fk_sembako_prices_sembako_2 foreign key (sembako_id) references sembakos (id) on delete restrict on update restrict;
 create index ix_sembako_prices_sembako_2 on sembako_prices (sembako_id);
+alter table sembako_prices add constraint fk_sembako_prices_city_3 foreign key (city_id) references cities (id) on delete restrict on update restrict;
+create index ix_sembako_prices_city_3 on sembako_prices (city_id);
 
 
 
