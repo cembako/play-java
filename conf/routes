@@ -4,9 +4,13 @@
 
 # Home page
 GET     /                         controllers.Application.index()
+GET     /loaddata                 controllers.Application.getLoadData
 POST    /user                     controllers.Application.addUser()
 GET     /users                    controllers.Application.getUsers
-GET     /sembakos                 controllers.Application.getSembakos
+GET     /sembakos                 controllers.Sembakos.index
+GET     /prices                   controllers.SembakoPrices.index
+GET     /pantauans                controllers.Pantauans.index
+POST    /pantauans                controllers.Pantauans.create
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
