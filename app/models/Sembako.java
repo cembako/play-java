@@ -20,7 +20,5 @@ public class Sembako extends Model {
 	public static Finder<Integer, Sembako> find = new Finder<>(Integer.class, Sembako.class);
 
 	public Sembako(){}
-	public Sembako(String name){ this.name = name;}
-
-	// public List<SembakoPrice> addPrice(){};
+	public Sembako(String name){ this.name = name ;}
 }

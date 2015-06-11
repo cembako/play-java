@@ -2,9 +2,8 @@ package models;
 
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 
 import models.Pantauan;
 import java.util.List;
@@ -18,17 +17,23 @@ public class Pantauan extends Model {
 
 	public float price;
 	public Sembako sembako;
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	public City city;
+
 	//public Vote[] votes;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	public User user;
 	
     public static Finder<Integer, Pantauan> find = new Finder<>(Integer.class, Pantauan.class);
 
-	List<Pantauan> getAll(){ return Pantauan.find.all() ;}
+	public List<Pantauan> getAll(){ return Pantauan.find.all() ;}
 	
-    //List<Pantauan> byCity(){ return Pantauan.find.all() ;}
+    public static List<Pantauan> byCity(City city){ return city.pantauans ;}
+
+	public static List<Pantauan> byUser(User user){ return user.pantauans ;}
     
-    //List<Pantauan> byUser(){ return Pantauan.find.all() ;}
-    
-    //int getScore(){ return 0; }
+    int getScore(){ return 0; }
 
 }

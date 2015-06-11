@@ -19,7 +19,7 @@ public class SembakoPrice extends Model {
 	@JsonIgnore
 	public Sembako sembako;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	public City city;
 
 	public float price;

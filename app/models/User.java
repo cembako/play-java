@@ -23,6 +23,10 @@ public class User extends Model {
 	@OneToMany(cascade = CascadeType.ALL)
 	public List<Pantauan> pantauans;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	public City city;
+
+
 	@Constraints.Email
 	@Column(unique = true)
 	public String email;
@@ -58,9 +62,8 @@ public class User extends Model {
 
 	// public List<String> seeNews(){}
 	public List<Sembako> seeSembakos(){
-	    return Sembako.find.all();
+	    List<Sembako> sembakos=this.city.getSembakos();
+		return sembakos;
 	}
-	public List<Pantauan> seePantauans(){
-		return Pantauan.find.all();
-	}
+	public List<Pantauan> seePantauans(){ return this.city.pantauans ;}
 }
