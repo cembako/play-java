@@ -3,16 +3,17 @@
 
 # --- !Ups
 
-create table city (
+create table cities (
   id                        integer not null,
   name                      varchar(255),
-  constraint pk_city primary key (id))
+  constraint pk_cities primary key (id))
 ;
 
-create table pantauan (
+create table pantauans (
   id                        integer not null,
+  user_id                   bigint not null,
   price                     float,
-  constraint pk_pantauan primary key (id))
+  constraint pk_pantauans primary key (id))
 ;
 
 create table person (
@@ -21,50 +22,55 @@ create table person (
   constraint pk_person primary key (id))
 ;
 
-create table sembako (
+create table sembakos (
   id                        integer not null,
   name                      varchar(255),
-  constraint pk_sembako primary key (id))
+  constraint pk_sembakos primary key (id))
 ;
 
-create table sembako_price (
+create table sembako_prices (
   id                        integer not null,
   sembako_id                integer,
   price                     float,
   date                      timestamp,
-  constraint pk_sembako_price primary key (id))
+  constraint pk_sembako_prices primary key (id))
 ;
 
-create table user (
-  id                        integer not null,
+create table users (
+  id                        bigint not null,
   name                      varchar(255),
   fullname                  varchar(255),
   password                  varchar(255),
-  constraint pk_user primary key (id))
+  email                     varchar(255),
+  constraint uq_users_name unique (name),
+  constraint uq_users_email unique (email),
+  constraint pk_users primary key (id))
 ;
 
-create table vote (
-  id                        integer not null,
+create table votes (
+  id                        bigint not null,
   score                     tinyint,
-  constraint pk_vote primary key (id))
+  constraint pk_votes primary key (id))
 ;
 
-create sequence city_seq;
+create sequence cities_seq;
 
-create sequence pantauan_seq;
+create sequence pantauans_seq;
 
 create sequence person_seq;
 
-create sequence sembako_seq;
+create sequence sembakos_seq;
 
-create sequence sembako_price_seq;
+create sequence sembako_prices_seq;
 
-create sequence user_seq;
+create sequence users_seq;
 
-create sequence vote_seq;
+create sequence votes_seq;
 
-alter table sembako_price add constraint fk_sembako_price_sembako_1 foreign key (sembako_id) references sembako (id) on delete restrict on update restrict;
-create index ix_sembako_price_sembako_1 on sembako_price (sembako_id);
+alter table pantauans add constraint fk_pantauans_users_1 foreign key (user_id) references users (id) on delete restrict on update restrict;
+create index ix_pantauans_users_1 on pantauans (user_id);
+alter table sembako_prices add constraint fk_sembako_prices_sembako_2 foreign key (sembako_id) references sembakos (id) on delete restrict on update restrict;
+create index ix_sembako_prices_sembako_2 on sembako_prices (sembako_id);
 
 
 
@@ -72,33 +78,33 @@ create index ix_sembako_price_sembako_1 on sembako_price (sembako_id);
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table if exists city;
+drop table if exists cities;
 
-drop table if exists pantauan;
+drop table if exists pantauans;
 
 drop table if exists person;
 
-drop table if exists sembako;
+drop table if exists sembakos;
 
-drop table if exists sembako_price;
+drop table if exists sembako_prices;
 
-drop table if exists user;
+drop table if exists users;
 
-drop table if exists vote;
+drop table if exists votes;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
-drop sequence if exists city_seq;
+drop sequence if exists cities_seq;
 
-drop sequence if exists pantauan_seq;
+drop sequence if exists pantauans_seq;
 
 drop sequence if exists person_seq;
 
-drop sequence if exists sembako_seq;
+drop sequence if exists sembakos_seq;
 
-drop sequence if exists sembako_price_seq;
+drop sequence if exists sembako_prices_seq;
 
-drop sequence if exists user_seq;
+drop sequence if exists users_seq;
 
-drop sequence if exists vote_seq;
+drop sequence if exists votes_seq;
 
