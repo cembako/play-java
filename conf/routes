@@ -10,6 +10,7 @@ GET     /users                    controllers.Application.getUsers
 GET     /sembakos                 controllers.Sembakos.index
 GET     /prices                   controllers.SembakoPrices.index
 GET     /pantauans                controllers.Pantauans.index
+GET     /cities                   controllers.Cities.index
 POST    /pantauans                controllers.Pantauans.create
 
 # Map static resources from the /public folder to the /assets URL path
