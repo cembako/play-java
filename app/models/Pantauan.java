@@ -21,7 +21,8 @@ public class Pantauan extends Model {
 	@ManyToOne(cascade = CascadeType.ALL)
 	public City city;
 
-	//public Vote[] votes;
+	@OneToOne(cascade = CascadeType.ALL)
+	public List<Vote> votes;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	public User user;
@@ -33,7 +34,6 @@ public class Pantauan extends Model {
     public static List<Pantauan> byCity(City city){ return city.pantauans ;}
 
 	public static List<Pantauan> byUser(User user){ return user.pantauans ;}
-    
-    int getScore(){ return 0; }
 
+    int getScore(){ return 0; }
 }
