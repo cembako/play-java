@@ -32,35 +32,4 @@ public class Application extends Controller {
     	List<User> users = User.find.all();
     	return ok(toJson(users));
     }
-    
-    public static Result getLoadData()  throws IOException {
-        //System.out.println(Paths.get(".").toAbsolutePath().normalize().toString());
-
-        City jogja = new City("Yogyakarta");
-        jogja.save();
-
-        String json = new String(Files.readAllBytes(Paths.get("2015-02.json")), StandardCharsets.UTF_8);
-        JsonSembako[] jsonSembakos=  new Gson().fromJson(json, JsonSembako[].class);
-
-        Arrays.stream(jsonSembakos).parallel().forEach(jsonSembako -> {
-            Sembako sembako = new Sembako();
-            sembako.name = jsonSembako.name;
-            sembako.save();
-
-            jsonSembako.prices.forEach((key, value) -> {
-                SembakoPrice price = new SembakoPrice();
-                price.city = jogja;
-                price.date = new Date(2015,2,key);
-                price.price = value;
-                price.sembako=sembako;
-                price.save();
-            });
-        });
-        return ok("Data should be loaded.");
-    }
-
-    public static Result getSembakos(){
-        List<Sembako> sembakos = Sembako.find.all();
-    	return ok( toJson(sembakos) );
-    }
 }
