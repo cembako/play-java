@@ -28,7 +28,7 @@ public class Pantauan extends Model {
 	
     public static Finder<Integer, Pantauan> find = new Finder<>(Integer.class, Pantauan.class);
 
-	public List<Pantauan> getAll(){ return Pantauan.find.all() ;}
+	public static List<Pantauan> getAll(){ return Pantauan.find.all() ;}
 	
     public static List<Pantauan> byCity(City city){ return city.pantauans ;}
 
