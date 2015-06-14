@@ -4,7 +4,7 @@
 
 # Home page
 GET     /                         controllers.Application.index()
-GET     /loaddata                 controllers.Application.getLoadData
+GET     /loaddata                 controllers.Sembakos.getLoadData
 POST    /user                     controllers.Application.addUser()
 GET     /users                    controllers.Application.getUsers
 GET     /sembakos                 controllers.Sembakos.index
