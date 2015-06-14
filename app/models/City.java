@@ -18,9 +18,6 @@ public class City extends Model {
 
 	@OneToMany
 	List<Pantauan> pantauans;
-
-	public City(){}
-	public City(String cityName) { this.name=cityName; }
 	
 	public static Finder<Integer, City> find = new Finder<>(Integer.class, City.class);
 

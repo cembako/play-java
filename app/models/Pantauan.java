@@ -14,13 +14,13 @@ public class Pantauan extends Model {
 
 	public float price;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	public Sembako sembako;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	public City city;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	public List<Vote> votes;
 
 	@ManyToOne(cascade = CascadeType.ALL)

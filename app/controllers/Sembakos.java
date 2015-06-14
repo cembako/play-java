@@ -22,7 +22,8 @@ public class Sembakos extends Controller
         //System.out.println(Paths.get(".").toAbsolutePath().normalize().toString());
         String json = new String(Files.readAllBytes(Paths.get("2015-02.json")), StandardCharsets.UTF_8);
         JsonSembako[] jsonSembakos=  new Gson().fromJson(json, JsonSembako[].class);
-        City jogja = new City("Yogyakarta");
+        City jogja = new City();
+        jogja.name= "Yogyakarta";
         jogja.save();
 
         Arrays.stream(jsonSembakos).forEach(jsonSembako -> {

@@ -23,7 +23,7 @@ public class User extends Model {
 	@OneToMany(cascade = CascadeType.ALL)
 	public List<Pantauan> pantauans;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	public City city;
 
 
@@ -65,5 +65,5 @@ public class User extends Model {
 	    List<Sembako> sembakos=this.city.getSembakos();
 		return sembakos;
 	}
-	public List<Pantauan> seePantauans(){ return this.city.pantauans ;}
+	public List<Pantauan> seePantauans(){ return this.city.getPantauans() ;}
 }
