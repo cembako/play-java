@@ -34,5 +34,12 @@ public class Pantauan extends Model {
 
 	public static List<Pantauan> byUser(User user){ return user.pantauans ;}
 
-    int getScore(){ return 0; }
+    public int getScore(){
+    	//this.votes.mapToInt(vote -> vote.score).sum();
+    	//belum bisa pakai Lambda, Ebean ngebug
+    	int score=0;
+    	for(Vote vote : this.votes)
+    		score+=vote.score;
+    	return score;
+    }
 }
